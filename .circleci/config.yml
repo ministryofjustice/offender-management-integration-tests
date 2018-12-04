@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  test:
     parallelism: 1
     working_directory: ~/offender-management-integration-tests
     docker:
@@ -33,3 +33,18 @@ jobs:
           path: screenshots
       - store_artifacts:
           path: screenshots
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - test
+  half_hourly:
+    triggers:
+      - schedule:
+          cron: 0,30 * * * * 
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - test
