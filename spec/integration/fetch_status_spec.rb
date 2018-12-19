@@ -10,7 +10,7 @@ RSpec.feature 'Fetching the status' do
   end
 
   scenario 'returns the database status from the allocation api' do
-    start_page = ENV.fetch('START_PAGE')
+    start_page = ENV.fetch('START_PAGE') + '/status'
 
     visit start_page
 
