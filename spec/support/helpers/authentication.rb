@@ -2,6 +2,7 @@ module Helpers
     module Authentication
       def sign_in_and_go(url)
         visit url
+        return if page.has_link?('Sign out')
 
         expect(page).to have_content('Username')
         expect(page).to have_content('Password')

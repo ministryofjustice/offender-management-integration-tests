@@ -13,6 +13,7 @@ Capybara.default_max_wait_time = 10
 
 RSpec.configure do |config|
   config.include Helpers::Authentication, type: :feature
+  config.include Helpers::Breadcrumbs, type: :feature
 
   config.disable_monkey_patching!
   config.before(:all) do
