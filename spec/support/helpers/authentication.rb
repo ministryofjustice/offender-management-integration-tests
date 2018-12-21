@@ -12,9 +12,5 @@ module Helpers
 
         click_button('Sign in')
       end
-
-      def signout()
-        click_on('Sign out')
-      end
     end
   end
