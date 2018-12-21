@@ -24,7 +24,5 @@ RSpec.feature 'POM management' do
     find('#working-pattern-1', :visible => false).choose
     find('#working-status-1', :visible => false).choose
     click_button('Save')
-
-    expect(page).to have_content('Routing Error')
   end
 end
