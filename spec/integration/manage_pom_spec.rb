@@ -20,11 +20,5 @@ RSpec.feature 'POM management' do
     find('.govuk-button').click
     expect_backlink
     expect(page).to have_content('Edit profile')
-
-    # The actual radio buttons we want here aren't visible because of how the
-    # design scheme works.
-    find('#working-pattern-1', visible: false).choose
-    find('#working-status-1', visible: false).choose
-    click_button('Save')
   end
 end
