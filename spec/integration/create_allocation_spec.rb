@@ -17,6 +17,6 @@ RSpec.feature 'Allocation' do
 
     click_button 'Complete allocation'
 
-    expect(page).to have_css('.govuk-tabs__tab--selected', text: 'Allocated')
+    expect(page).to have_current_path "#{ENV.fetch('START_PAGE')}/allocations#awaiting-allocation"
   end
 end
