@@ -15,7 +15,7 @@ RSpec.feature 'Allocation' do
     find('#case_information_tier_A', visible: false).choose
     click_button 'Save'
 
-    visit "#{ENV.fetch('START_PAGE')}/allocations#awaiting-allocation"
+    visit "#{ENV.fetch('START_PAGE')}/summary#awaiting-allocation"
     within('.offender_row_0') do
       click_link 'Allocate'
     end
@@ -26,6 +26,6 @@ RSpec.feature 'Allocation' do
 
     click_button 'Complete allocation'
 
-    expect(page).to have_current_path "#{ENV.fetch('START_PAGE')}/allocations#awaiting-allocation"
+    expect(page).to have_current_path "#{ENV.fetch('START_PAGE')}/summary#awaiting-allocation"
   end
 end
