@@ -17,6 +17,8 @@ RSpec.feature 'Allocation' do
 
     click_button 'Save'
 
+    sleep 5
+
     visit "#{ENV.fetch('START_PAGE')}/summary#awaiting-allocation"
     within('.offender_row_0') do
       click_link 'Allocate'
