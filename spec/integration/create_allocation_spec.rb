@@ -5,7 +5,7 @@ require 'spec_helper'
 RSpec.feature 'Allocation' do
   scenario 'create an allocation' do
     sign_in_and_go ENV.fetch('START_PAGE')
-    click_link 'Awaiting information'
+    click_link 'Update case information'
 
     within('.offender_row_0') do
       click_link 'Edit'
@@ -19,7 +19,7 @@ RSpec.feature 'Allocation' do
 
     sleep 5
 
-    visit "#{ENV.fetch('START_PAGE')}/summary#awaiting-allocation"
+    visit "#{ENV.fetch('START_PAGE')}/summary/unallocated"
     within('.offender_row_0') do
       click_link 'Allocate'
     end
@@ -30,7 +30,7 @@ RSpec.feature 'Allocation' do
 
     click_button 'Complete allocation'
 
-    expect(page).to have_current_path "#{ENV.fetch('START_PAGE')}/summary#awaiting-allocation"
+    expect(page).to have_current_path "#{ENV.fetch('START_PAGE')}/summary/unallocated"
   end
 
   def fill_in_case_information(tier)
@@ -38,16 +38,24 @@ RSpec.feature 'Allocation' do
     when 'a'
       select_case_allocation('NPS')
       select_tier('A')
+      select_welshness('Yes')
     when 'b'
       select_case_allocation('NPS')
       select_tier('B')
+      select_welshness('Yes')
     when 'c'
       select_case_allocation('CRC')
       select_tier('C')
+      select_welshness('Yes')
     when 'd'
       select_case_allocation('CRC')
       select_tier('D')
+      select_welshness('Yes')
     end
+  end
+
+  def select_welshness(val)
+    find("#case_information_welsh_address_#{val}", visible: false).choose
   end
 
   def select_case_allocation(case_allocation)
