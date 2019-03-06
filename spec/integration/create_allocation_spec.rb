@@ -6,20 +6,21 @@ RSpec.feature 'Allocation' do
   scenario 'create an allocation' do
     sign_in_and_go ENV.fetch('START_PAGE')
     click_link 'Update case information'
+    expect(page).to have_content('Update information')
 
     within('.offender_row_0') do
       click_link 'Edit'
     end
 
     tiers = %w[a b c d]
-
     fill_in_case_information(tiers.sample)
 
     click_button 'Save'
-
-    sleep 5
+    expect(page).to have_content('Update information')
 
     visit "#{ENV.fetch('START_PAGE')}/summary/unallocated"
+    expect(page).to have_content('Make allocations')
+
     within('.offender_row_0') do
       click_link 'Allocate'
     end
