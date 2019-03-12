@@ -7,7 +7,7 @@ RSpec.feature 'POM management' do
     sign_in_and_go ENV.fetch('START_PAGE')
     expect(page).to have_content('Dashboard')
 
-    click_on('Active POMs')
+    click_on('View all offender managers')
     expect_breadcrumbs(2)
     expect(page).to have_content('Prison Offender Managers')
     expect(page).to have_css('.govuk-tabs__list-item', count: 2)
