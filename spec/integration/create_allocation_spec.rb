@@ -6,11 +6,12 @@ RSpec.feature 'Allocation' do
   scenario 'create an allocation' do
     sign_in_and_go ENV.fetch('START_PAGE')
     click_link 'Update case information'
-    expect(page).to have_content('Update information')
 
     within('.offender_row_0') do
       click_link 'Edit'
     end
+
+    find("#case_information_welsh_address_Yes", visible: false).choose
 
     tiers = %w[a b c d]
     fill_in_case_information(tiers.sample)
@@ -25,7 +26,9 @@ RSpec.feature 'Allocation' do
       click_link 'Allocate'
     end
 
-    within('.recommended_pom_row_0') do
+    pom_rows = %w[0 1 2]
+
+    within(".recommended_pom_row_#{pom_rows.sample}") do
       click_link 'Allocate'
     end
 
