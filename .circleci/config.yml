@@ -38,13 +38,13 @@ workflows:
   commit:
     jobs:
       - test
-  half_hourly:
-    triggers:
-      - schedule:
-          cron: 0,30 * * * * 
-          filters:
-            branches:
-              only:
-                - master
-    jobs:
-      - test
+#  half_hourly:
+#    triggers:
+#      - schedule:
+#          cron: 0,30 * * * *
+#          filters:
+#            branches:
+#              only:
+#                - master
+#    jobs:
+#      - test
