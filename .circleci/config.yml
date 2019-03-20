@@ -4,7 +4,7 @@ jobs:
     parallelism: 1
     working_directory: ~/offender-management-integration-tests
     docker:
-      - image: circleci/ruby:2.5.3-node-browsers
+      - image: circleci/ruby:2.6.2-node-browsers
     steps:
       - checkout
       - restore_cache:
@@ -38,13 +38,3 @@ workflows:
   commit:
     jobs:
       - test
-#  half_hourly:
-#    triggers:
-#      - schedule:
-#          cron: 0,30 * * * *
-#          filters:
-#            branches:
-#              only:
-#                - master
-#    jobs:
-#      - test
