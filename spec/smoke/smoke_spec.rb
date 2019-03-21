@@ -13,7 +13,7 @@ RSpec.feature 'Smoke test' do
   scenario 'can successfully visit all the pages' do
     root = ENV.fetch('PRODUCTION_START_PAGE')
 
-    sign_in_and_go root
+    sign_in_and_go_production root
 
     expect(page).to have_css('.govuk-heading-xl', text: 'Dashboard')
 

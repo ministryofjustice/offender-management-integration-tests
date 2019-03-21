@@ -4,7 +4,7 @@ require 'spec_helper'
 
 RSpec.feature 'POM management' do
   scenario 'editing a POMs' do
-    sign_in_and_go ENV.fetch('STAGING_START_PAGE')
+    sign_in_and_go_staging ENV.fetch('STAGING_START_PAGE')
     expect(page).to have_content('Dashboard')
 
     click_on('View all offender managers')

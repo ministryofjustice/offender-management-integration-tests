@@ -3,15 +3,28 @@
 # rubocop:disable Metrics/AbcSize
 module Helpers
   module Authentication
-    def sign_in_and_go(url)
+    def sign_in_and_go_staging(url)
       visit url
       return if page.has_link?('Sign out')
 
       expect(page).to have_content('Username')
       expect(page).to have_content('Password')
 
-      fill_in 'Username', with: ENV.fetch('STAFF_USERNAME')
-      fill_in 'Password', with: ENV.fetch('STAFF_PASSWORD')
+      fill_in 'Username', with: ENV.fetch('STAGING_STAFF_USERNAME')
+      fill_in 'Password', with: ENV.fetch('STAGING_STAFF_PASSWORD')
+
+      click_button('Sign in')
+    end
+
+    def sign_in_and_go_production(url)
+      visit url
+      return if page.has_link?('Sign out')
+
+      expect(page).to have_content('Username')
+      expect(page).to have_content('Password')
+
+      fill_in 'Username', with: ENV.fetch('PRODUCTION_STAFF_USERNAME')
+      fill_in 'Password', with: ENV.fetch('PRODUCTION_STAFF_PASSWORD')
 
       click_button('Sign in')
     end

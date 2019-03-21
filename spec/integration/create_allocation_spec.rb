@@ -4,7 +4,7 @@ require 'spec_helper'
 
 RSpec.feature 'Allocation' do
   scenario 'create an allocation' do
-    sign_in_and_go ENV.fetch('STAGING_START_PAGE')
+    sign_in_and_go_staging ENV.fetch('STAGING_START_PAGE')
     click_link 'Update case information'
 
     within('.offender_row_0') do
