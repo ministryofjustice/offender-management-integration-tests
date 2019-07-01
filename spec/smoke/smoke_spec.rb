@@ -20,18 +20,8 @@ RSpec.feature 'Smoke test' do
 
     expect(page).to have_css('.govuk-breadcrumbs__link', text: 'Update information')
 
-    visit root + "/caseload"
-
-    expect(page).to have_css('.govuk-breadcrumbs__link', text: 'Your caseload')
-
-    visit root + "/caseload/new"
-
-    expect(page).to have_css('.govuk-breadcrumbs__link', text: 'New cases')
-
     visit root + "/poms"
 
     expect(page).to have_css('.govuk-breadcrumbs__link', text: 'Prison Offender Managers')
   end
 end
-
-
