@@ -19,7 +19,7 @@ RSpec.feature 'Allocation' do
     click_button 'Save'
     expect(page).to have_content('Update information')
 
-    visit "#{ENV.fetch('STAGING_START_PAGE')}/summary/unallocated"
+    visit "#{ENV.fetch('STAGING_START_PAGE')}/prisons/LEI/summary/unallocated"
     expect(page).to have_content('Make allocations')
 
     within('.offender_row_0') do
@@ -34,7 +34,7 @@ RSpec.feature 'Allocation' do
 
     click_button 'Complete allocation'
 
-    expect(page).to have_current_path "#{ENV.fetch('STAGING_START_PAGE')}/summary/unallocated"
+    expect(page).to have_current_path "#{ENV.fetch('STAGING_START_PAGE')}/prisons/LEI/summary/unallocated"
   end
 
   def fill_in_case_information(tier)

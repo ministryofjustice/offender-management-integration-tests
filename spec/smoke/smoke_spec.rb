@@ -8,19 +8,19 @@ RSpec.feature 'Smoke test' do
 
     expect(page).to have_css('.govuk-heading-xl', text: 'Dashboard')
 
-    visit root + "/summary/allocated"
+    visit root + "/prisons/LEI/summary/allocated"
 
     expect(page).to have_css('.govuk-breadcrumbs__link', text: 'See allocations')
 
-    visit root + "/summary/unallocated"
+    visit root + "/prisons/LEI/summary/unallocated"
 
     expect(page).to have_css('.govuk-breadcrumbs__link', text: 'Make allocations')
 
-    visit root + "/summary/pending"
+    visit root + "/prisons/LEI/summary/pending"
 
     expect(page).to have_css('.govuk-breadcrumbs__link', text: 'Update information')
 
-    visit root + "/poms"
+    visit root + "/prisons/LEI/poms"
 
     expect(page).to have_css('.govuk-breadcrumbs__link', text: 'Prison Offender Managers')
   end
