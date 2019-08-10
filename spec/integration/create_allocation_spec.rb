@@ -5,19 +5,22 @@ require 'spec_helper'
 RSpec.feature 'Allocation' do
   scenario 'create an allocation' do
     sign_in_and_go_staging ENV.fetch('STAGING_START_PAGE')
-    click_link 'Update case information'
 
-    within('.offender_row_0') do
-      click_link 'Edit'
-    end
+    # Temporarily disabled whilst case info undergoes changes
 
-    find("#case_information_omicable_Yes", visible: false).choose
+    # click_link 'Update case information'
 
-    tiers = %w[a b c d]
-    fill_in_case_information(tiers.sample)
+    # within('.offender_row_0') do
+    #   click_link 'Update'
+    # end
 
-    click_button 'Save'
-    expect(page).to have_content('Update information')
+    # find("#case_information_omicable_Yes", visible: false).choose
+
+    # tiers = %w[a b c d]
+    # fill_in_case_information(tiers.sample)
+
+    # click_button 'Save'
+    # expect(page).to have_content('Update information')
 
     visit "#{ENV.fetch('STAGING_START_PAGE')}/prisons/LEI/summary/unallocated"
     expect(page).to have_content('Make allocations')
@@ -33,6 +36,10 @@ RSpec.feature 'Allocation' do
     end
 
     click_button 'Complete allocation'
+
+    # Explicitly wait for the following page to load, it's a slow one so we can't
+    # assume the page URL has already changed.
+    sleep 30
 
     expect(page).to have_current_path "#{ENV.fetch('STAGING_START_PAGE')}/prisons/LEI/summary/unallocated"
   end
