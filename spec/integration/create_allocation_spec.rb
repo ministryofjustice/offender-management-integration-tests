@@ -6,21 +6,19 @@ RSpec.feature 'Allocation' do
   scenario 'create an allocation' do
     sign_in_and_go_staging ENV.fetch('STAGING_START_PAGE')
 
-    # Temporarily disabled whilst case info undergoes changes
+    click_link 'Update case information'
 
-    # click_link 'Update case information'
+    within('.offender_row_0') do
+      click_link 'Edit'
+    end
 
-    # within('.offender_row_0') do
-    #   click_link 'Update'
-    # end
+    find("#case_information_omicable_Yes", visible: false).choose
 
-    # find("#case_information_omicable_Yes", visible: false).choose
+    tiers = %w[a b c d]
+    fill_in_case_information(tiers.sample)
 
-    # tiers = %w[a b c d]
-    # fill_in_case_information(tiers.sample)
-
-    # click_button 'Save'
-    # expect(page).to have_content('Update information')
+    click_button 'Save'
+    expect(page).to have_content('Update information')
 
     visit "#{ENV.fetch('STAGING_START_PAGE')}/prisons/LEI/summary/unallocated"
     expect(page).to have_content('Make allocations')
