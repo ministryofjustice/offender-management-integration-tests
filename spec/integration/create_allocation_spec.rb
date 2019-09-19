@@ -12,7 +12,7 @@ RSpec.feature 'Allocation' do
       click_link 'Edit'
     end
 
-    find("#case_information_omicable_Yes", visible: false).choose
+    find("#case_information_welsh_offender_Yes", visible: false).choose
 
     tiers = %w[a b c d]
     fill_in_case_information(tiers.sample)
@@ -64,7 +64,7 @@ RSpec.feature 'Allocation' do
   end
 
   def select_welshness(val)
-    find("#case_information_omicable_#{val}", visible: false).choose
+    find("#case_information_welsh_offender_#{val}", visible: false).choose
   end
 
   def select_case_allocation(case_allocation)
