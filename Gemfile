@@ -5,7 +5,7 @@ ruby '2.6.3'
 
 gem 'capybara'
 gem 'capybara-screenshot'
-# gem 'excon'
+gem 'geckodriver-helper'
 gem 'rspec'
 gem 'rspec_junit_formatter'
 gem 'selenium-webdriver'
