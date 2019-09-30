@@ -38,8 +38,8 @@ RSpec.feature 'Allocation' do
     # Explicitly wait for the following page to load, it's a slow one so we can't
     # assume the page URL has already changed.
     sleep 30
-
-    expect(page).to have_current_path "#{ENV.fetch('STAGING_START_PAGE')}/prisons/LEI/summary/unallocated"
+    
+    expect(page).to have_current_path "#{ENV.fetch('STAGING_START_PAGE')}/prisons/LEI/summary/unallocated?page=1&sort="
   end
 
   def fill_in_case_information(tier)
