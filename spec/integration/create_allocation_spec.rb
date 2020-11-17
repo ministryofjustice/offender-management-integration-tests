@@ -18,7 +18,7 @@ RSpec.feature 'Allocation' do
     fill_in_case_information(tiers.sample)
 
     click_button 'Save'
-    expect(page).to have_content('Update information')
+    expect(page).to have_content('Add missing information')
 
     visit "#{ENV.fetch('STAGING_START_PAGE')}/prisons/LEI/summary/unallocated"
     expect(page).to have_content('Make allocations')
