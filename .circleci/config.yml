@@ -21,8 +21,8 @@ jobs:
       - run:
           name: install geckodriver
           command: |
-            wget https://github.com/mozilla/geckodriver/releases/download/v0.23.0/geckodriver-v0.23.0-linux64.tar.gz
-            tar -zxvf geckodriver-v0.23.0-linux64.tar.gz
+            wget https://github.com/mozilla/geckodriver/releases/download/v0.24.0/geckodriver-v0.24.0-linux64.tar.gz
+            tar -zxvf geckodriver-v0.24.0-linux64.tar.gz
             sudo mv geckodriver /usr/local/bin/
       - run: bundle exec rspec spec/integration --no-color --format documentation --format RspecJunitFormatter -o screenshots/rspec.xml
       - save_cache:

@@ -5,7 +5,6 @@ ruby '2.6.6'
 
 gem 'capybara'
 gem 'capybara-screenshot'
-gem 'geckodriver-helper'
 gem 'rspec'
 gem 'rspec_junit_formatter'
 gem 'selenium-webdriver'
