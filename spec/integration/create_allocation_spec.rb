@@ -20,7 +20,7 @@ RSpec.feature 'Allocation' do
     click_button 'Save'
     expect(page).to have_content('Add missing information')
 
-    visit "#{ENV.fetch('STAGING_START_PAGE')}/prisons/LEI/summary/unallocated"
+    click_link 'Make allocations'
     expect(page).to have_content('Make allocations')
 
     within('.offender_row_0') do
@@ -38,8 +38,7 @@ RSpec.feature 'Allocation' do
     # Explicitly wait for the following page to load, it's a slow one so we can't
     # assume the page URL has already changed.
     sleep 30
-    
-    expect(page).to have_current_path "#{ENV.fetch('STAGING_START_PAGE')}/prisons/LEI/summary/unallocated", ignore_query: true
+    expect(page).to have_content('Make allocations')
   end
 
   def fill_in_case_information(tier)
