@@ -8,9 +8,6 @@ RSpec.feature 'Allocation' do
 
     click_link 'Update case information'
 
-    wait_for { current_path.include?('pending') }
-
-    find('.offender_row_0')
     within('.offender_row_0') do
       click_link 'Edit'
     end
@@ -40,8 +37,7 @@ RSpec.feature 'Allocation' do
 
     # Explicitly wait for the following page to load, it's a slow one so we can't
     # assume the page URL has already changed.
-    wait_for { current_path.include?('unallocated') }
-
+    sleep 30
     expect(page).to have_content('Make allocations')
   end
 
