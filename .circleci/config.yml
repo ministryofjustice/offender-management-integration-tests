@@ -3,6 +3,7 @@ jobs:
   test:
     parallelism: 1
     working_directory: ~/offender-management-integration-tests
+    resource_class: small
     docker:
       - image: circleci/ruby:2.6.6-node-browsers
     steps:
@@ -38,10 +39,10 @@ workflows:
   commit:
     jobs:
       - test
-  hourly:
+  threehourly:
     triggers:
       - schedule:
-          cron: 0 * * * *
+          cron: 30 0,3,6,9,12,15,18,21 * * *
           filters:
             branches:
               only:
