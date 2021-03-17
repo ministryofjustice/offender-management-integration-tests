@@ -8,7 +8,7 @@ RSpec.feature 'Allocation' do
 
     click_link 'Update case information'
 
-    wait_for { current_path.include?('pending') }
+    wait_for { current_path.include?('missing_information') }
 
     find('.offender_row_0')
     within('.offender_row_0') do
