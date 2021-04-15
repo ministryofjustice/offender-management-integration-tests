@@ -15,7 +15,7 @@ RSpec.feature 'Allocation' do
       click_link 'Edit'
     end
 
-    find("#case_information_welsh_offender_Yes", visible: false).choose
+    select_welshness('Yes')
 
     tiers = %w[a b c d]
     fill_in_case_information(tiers.sample)
@@ -67,14 +67,18 @@ RSpec.feature 'Allocation' do
   end
 
   def select_welshness(val)
-    find("#case_information_welsh_offender_#{val}", visible: false).choose
+    if val == 'Yes'
+      find('label[for=case-information-probation-service-wales-field]').click
+    else
+      find('label[for=case-information-probation-service-england-field]').click
+    end
   end
 
   def select_case_allocation(case_allocation)
-    find("#case_information_case_allocation_#{case_allocation}", visible: false).choose
+    find("label[for=case-information-case-allocation-#{case_allocation.downcase}-field]").click
   end
 
   def select_tier(tier)
-    find("#case_information_tier_#{tier}", visible: false).choose
+    find("label[for=case-information-tier-#{tier.downcase}-field]").click
   end
 end
