@@ -8,10 +8,10 @@ RSpec.feature 'POM management' do
     expect(page).to have_content('Dashboard')
 
     click_on('View all offender managers')
-    expect(page).to have_content('Prison Offender Managers')
-    expect(page).to have_css('.govuk-tabs__list-item', count: 2)
+    expect(page).to have_content('Manage your staff')
+    expect(page).to have_css('.govuk-tabs__list-item', count: 3)
 
-    page.first(:link, 'View').click
+    page.first(:link, 'Ian Donohue').click
     expect(page).to have_content('POM level')
     expect(page).to have_content('Working pattern')
 
