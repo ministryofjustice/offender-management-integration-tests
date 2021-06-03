@@ -10,7 +10,7 @@ module Helpers
       expect(page).to have_css('.govuk-back-link', count: 1)
     end
 
-    def wait_for(maximum_wait_in_seconds = 10)
+    def wait_for(maximum_wait_in_seconds = 20)
       Selenium::WebDriver::Wait.new(timeout: maximum_wait_in_seconds).until { yield }
     end
   end
