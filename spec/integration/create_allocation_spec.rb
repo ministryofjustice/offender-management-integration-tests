@@ -30,6 +30,8 @@ RSpec.feature 'Allocation' do
       click_link 'Allocate'
     end
 
+    wait_for(30) { page.has_content? 'Allocate a Prison Offender Manager' }
+
     pom_rows = %w[0 1 2]
 
     within(".recommended_pom_row_#{pom_rows.sample}") do
