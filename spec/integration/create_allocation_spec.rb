@@ -30,12 +30,14 @@ RSpec.feature 'Allocation' do
       click_link 'Allocate'
     end
 
-    wait_for(30) { page.has_content? 'Allocate a Prison Offender Manager' }
+    wait_for(30) { page.has_content? 'Allocate a POM' }
 
     pom_rows = %w[0 1 2]
 
-    within(".recommended_pom_row_#{pom_rows.sample}") do
-      click_link 'Allocate'
+    within '#recommended_poms' do
+      within "tbody > tr:nth-child(#{pom_rows.sample})" do
+        click_link 'Allocate'
+      end
     end
 
     click_button 'Complete allocation'
