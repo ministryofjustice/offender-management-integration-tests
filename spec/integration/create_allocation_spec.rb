@@ -32,7 +32,7 @@ RSpec.feature 'Allocation' do
 
     wait_for(30) { page.has_content? 'Allocate a POM' }
 
-    pom_rows = %w[0 1 2]
+    pom_rows = %w[1 2 3]
 
     within '#recommended_poms' do
       within "tbody > tr:nth-child(#{pom_rows.sample})" do
