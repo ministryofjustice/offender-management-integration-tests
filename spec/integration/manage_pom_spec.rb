@@ -13,10 +13,11 @@ RSpec.feature 'POM management' do
     expect(page).to have_css('.govuk-tabs__list-item', count: 3)
 
     page.first(:link, 'Ian Donohue').click
-    expect(page).to have_content('POM level')
     expect(page).to have_content('Working pattern')
 
-    find('.govuk-button').click
+    within first('.govuk-summary-list__row') do
+      click_link "Change"
+    end
     expect_backlink
     expect(page).to have_content('Edit profile')
   end
