@@ -27,7 +27,9 @@ RSpec.feature 'Allocation' do
     expect(page).to have_content('Make allocations')
 
     within('.offender_row_0') do
-      click_link 'Allocate'
+      within('td[aria-label="Prisoner name"]') do
+        find('a').click
+      end
     end
 
     wait_for(30) { page.has_content? 'Allocate a POM' }
