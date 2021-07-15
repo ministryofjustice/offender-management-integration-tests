@@ -9,7 +9,9 @@ Dir['./spec/support/**/*.rb'].each { |f| require f }
 
 Capybara.default_driver = :selenium
 Capybara.save_path = File.expand_path('../screenshots', __dir__)
-Capybara.default_max_wait_time = 10
+
+# Wait (up to) a really long time for pages to load – useful for when the Prison API is being slow
+Capybara.default_max_wait_time = 30
 
 RSpec.configure do |config|
   config.include Helpers::Authentication, type: :feature

@@ -6,13 +6,13 @@ RSpec.feature 'Allocation' do
   scenario 'create an allocation' do
     sign_in_and_go_staging ENV.fetch('STAGING_START_PAGE')
 
-    click_link 'Update case information'
+    expect(page).to have_heading('Dashboard')
+    click_link 'Add missing details'
 
-    wait_for { current_path.include?('missing_information') }
+    expect(page).to have_heading('Add missing details')
 
-    find('.offender_row_0')
     within('.offender_row_0') do
-      click_link 'Edit'
+      click_link 'Add missing details'
     end
 
     select_welshness('Yes')
@@ -21,10 +21,10 @@ RSpec.feature 'Allocation' do
     fill_in_case_information(tiers.sample)
 
     click_button 'Save'
-    expect(page).to have_content('Add missing information')
+    expect(page).to have_heading('Add missing details')
 
-    click_link 'Make allocations'
-    expect(page).to have_content('Make allocations')
+    click_link 'Make new allocations'
+    expect(page).to have_heading('Make new allocations')
 
     within('.offender_row_0') do
       within('td[aria-label="Prisoner name"]') do
@@ -32,7 +32,7 @@ RSpec.feature 'Allocation' do
       end
     end
 
-    wait_for(30) { page.has_content? 'Allocate a POM' }
+    expect(page).to have_heading('Allocate a POM')
 
     pom_rows = %w[1 2 3]
 
@@ -48,7 +48,12 @@ RSpec.feature 'Allocation' do
     # assume the page URL has already changed.
     wait_for { current_path.include?('unallocated') }
 
-    expect(page).to have_content('Make allocations')
+    expect(page).to have_heading('Make new allocations')
+
+    within('.notification') do
+      # Expect to see flash message "{Offender Name} has been allocated to {POM name}"
+      expect(page).to have_content 'has been allocated'
+    end
   end
 
   def fill_in_case_information(tier)
