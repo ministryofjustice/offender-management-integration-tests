@@ -14,14 +14,6 @@ jobs:
       - run:
           name: Ensure local bin directory exists
           command: mkdir -p ~/.local/bin
-      - run:
-          # Firefox needs to be available from /usr/local/bin or else the Orb will re-install it
-          name: Restore Firefox installation from cache (if in cache)
-          command: |
-            if [ -e ~/.local/bin/firefox ] && [ ! -f /usr/local/bin/firefox ]
-            then
-              sudo cp -P ~/.local/bin/firefox /usr/local/bin/firefox
-            fi
       - browser-tools/install-firefox:
           install-dir: /home/circleci/.local/bin
       - run:
