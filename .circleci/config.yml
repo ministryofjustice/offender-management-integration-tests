@@ -25,9 +25,13 @@ jobs:
       - browser-tools/install-firefox:
           install-dir: /home/circleci/.local/bin
       - run:
-          # Copy the Firefox symlink back into ~/.local/bin so it persists to the cache
+          # Copy the Firefox symlink back into ~/.local/bin so it persists to the cache (if file is not present)
           name: Put Firefox installation into the local bin directory
-          command: cp -P /usr/local/bin/firefox ~/.local/bin/firefox
+          command: |
+            if [ ! -f ~/.local/bin/firefox ]
+            then
+              cp -P /usr/local/bin/firefox ~/.local/bin/firefox
+            fi
       - browser-tools/install-geckodriver:
           install-dir: /home/circleci/.local/bin
       - run: bundle config set path 'vendor/bundle'
