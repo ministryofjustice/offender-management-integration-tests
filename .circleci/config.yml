@@ -18,7 +18,7 @@ jobs:
           # Firefox needs to be available from /usr/local/bin or else the Orb will re-install it
           name: Restore Firefox installation from cache (if in cache)
           command: |
-            if [ -e ~/.local/bin/firefox ]
+            if [ -e ~/.local/bin/firefox ] && [ ! -f /usr/local/bin/firefox ]
             then
               sudo cp -P ~/.local/bin/firefox /usr/local/bin/firefox
             fi
