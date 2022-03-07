@@ -6,7 +6,7 @@ jobs:
     parallelism: 1
     resource_class: small
     docker:
-      - image: cimg/ruby:2.6.8-browsers
+       - image: cimg/ruby:2.7.5-browsers
     steps:
       - checkout
       - restore_cache:
