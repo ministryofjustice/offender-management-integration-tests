@@ -15,7 +15,7 @@ RSpec.feature 'POM management' do
     page.first(:link, 'Ian Donohue').click
     expect(page).to have_content('Working pattern')
 
-    within first('.govuk-summary-list__row') do
+    within first('.govuk-summary-list__row:nth-child(4)') do
       click_link "Change"
     end
     expect_backlink
