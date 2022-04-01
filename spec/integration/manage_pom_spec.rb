@@ -12,7 +12,7 @@ RSpec.feature 'POM management' do
 
     expect(page).to have_css('.govuk-tabs__list-item', count: 3)
 
-    page.first(:link, 'Ian Donohue').click
+    page.first(:link, 'Jon Hindle').click
     expect(page).to have_content('Working pattern')
 
     within first('.govuk-summary-list__row:nth-child(4)') do
