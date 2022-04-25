@@ -7,7 +7,7 @@ RSpec.feature 'POM management' do
     sign_in_and_go_staging ENV.fetch('STAGING_START_PAGE')
     expect(page).to have_heading('Dashboard')
 
-    click_on('View all offender managers')
+    click_on('View all POMs')
     wait_for { page.has_content? 'Manage your staff' }
 
     expect(page).to have_css('.govuk-tabs__list-item', count: 3)
